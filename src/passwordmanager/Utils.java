@@ -3,6 +3,7 @@ package src.passwordmanager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Utils {
     private static String home;
@@ -36,5 +37,18 @@ public class Utils {
     public void delete(String field) {
         File target = new File(home + field + ".enc");
         target.delete();
+    }
+
+    public String readHash(String field) {
+        File target = new File(home + field + ".enc");
+        try {
+            Scanner sc = new Scanner(target);
+            String hash = sc.nextLine();
+            sc.close();
+            return hash;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 }
