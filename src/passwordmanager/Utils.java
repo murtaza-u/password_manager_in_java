@@ -71,4 +71,14 @@ public class Utils { private static String home;
             return null;
         }
     }
+
+    public boolean fieldExists(String field) {
+        File homeDir = new File(home);
+        for (String file : homeDir.list()) {
+            if (file.equals(field + ".enc")) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
