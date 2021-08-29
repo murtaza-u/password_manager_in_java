@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.Console;
 
-public class Utils {
-    private static String home;
+public class Utils { private static String home;
 
     Utils() {
         String os = System.getProperty("os.name").toLowerCase();
@@ -48,6 +48,26 @@ public class Utils {
             return hash;
         } catch (Exception e) {
             System.out.println(e);
+            return null;
+        }
+    }
+
+    public String readPassword(String prompt) {
+        try {
+            // creates a console object
+            Console cnsl = System.console();
+
+            if (cnsl == null) {
+                System.out.println("No console available");
+                return null;
+            }
+
+            // read password into the char array
+            char[] pwd = cnsl.readPassword(prompt + ": ");
+
+            return new String(pwd);
+        } catch(Exception e) {
+            System.out.print("An error occured " + e);
             return null;
         }
     }
