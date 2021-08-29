@@ -53,6 +53,10 @@ public class Main {
                     utils.delete(args[1]);
                     break;
 
+                case "help":
+                    System.out.println(utils.provideHelp());
+                    break;
+
                 default:
                     System.out.println("Wrong arguments");
                     break;

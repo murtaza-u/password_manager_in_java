@@ -81,4 +81,13 @@ public class Utils { private static String home;
         }
         return false;
     }
+
+    public String provideHelp() {
+        return String.format("%s\n%s\n%s\n%s\n%s",
+            "# Usage java -jar passwordmanager <options> <arguments>",
+            "help\tDisplays this help menu",
+            "insert\tMust be followed by the field name. Inserts a new password entry",
+            "delete\tMust be followed by the field name. Deletes a password entry",
+            "ls\tIf followed my the field name decrypts the corresponding password; otherwise lists all the entries");
+    }
 }
