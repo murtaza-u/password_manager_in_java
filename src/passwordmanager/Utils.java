@@ -32,4 +32,9 @@ public class Utils {
         fileWriter.write(hash);
         fileWriter.close();
     }
+
+    public void delete(String field) {
+        File target = new File(home + field + ".enc");
+        target.delete();
+    }
 }
