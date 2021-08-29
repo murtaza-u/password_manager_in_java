@@ -1,6 +1,8 @@
 package src.passwordmanager;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Utils {
     private static String home;
@@ -23,5 +25,11 @@ public class Utils {
     public String[] listFields() {
         File homeDir = new File(home);
         return homeDir.list();
+    }
+
+    public void insert(String field, String hash) throws IOException {
+        FileWriter fileWriter = new FileWriter(home + field + ".enc");
+        fileWriter.write(hash);
+        fileWriter.close();
     }
 }
