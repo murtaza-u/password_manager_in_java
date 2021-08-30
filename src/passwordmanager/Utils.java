@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.Console;
 
-public class Utils { private static String home;
+public class Utils {
+    private static String home;
 
     Utils() {
         String os = System.getProperty("os.name").toLowerCase();
