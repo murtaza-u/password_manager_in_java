@@ -1,4 +1,4 @@
-package src.passwordmanager;
+package src.passwordmanager.utils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,7 +10,7 @@ import java.io.Console;
 public class Utils {
     private static String home;
 
-    Utils() {
+    public Utils() {
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")){
             home = Paths.get(System.getProperty("user.home"), "AppData", "passwordmanager").toString();
