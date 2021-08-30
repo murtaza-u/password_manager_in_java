@@ -3,6 +3,7 @@ package src.passwordmanager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.Console;
 
@@ -12,10 +13,10 @@ public class Utils {
     Utils() {
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")){
-            home = System.getProperty("user.home") + "/AppData/passwordmanager/";
+            home = Paths.get(System.getProperty("user.home"), "AppData", "passwordmanager").toString();
         }
         else if (os.contains("osx") || os.contains("nix") || os.contains("aix") || os.contains("nux")){
-            home = System.getProperty("user.home") + "/.local/share/passwordmanager/";
+            home = Paths.get(System.getProperty("user.home"), ".local", "share", "passwordmanager").toString();
         }
 
         File homeDir = new File(home);
@@ -30,18 +31,18 @@ public class Utils {
     }
 
     public void insert(String field, String hash) throws IOException {
-        FileWriter fileWriter = new FileWriter(home + field + ".enc");
+        FileWriter fileWriter = new FileWriter(Paths.get(home, field + ".enc").toString());
         fileWriter.write(hash);
         fileWriter.close();
     }
 
     public void delete(String field) {
-        File target = new File(home + field + ".enc");
+        File target = new File(Paths.get(home, field + ".enc").toString());
         target.delete();
     }
 
     public String readHash(String field) {
-        File target = new File(home + field + ".enc");
+        File target = new File(Paths.get(home, field + ".enc").toString());
         try {
             Scanner sc = new Scanner(target);
             String hash = sc.nextLine();
