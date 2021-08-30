@@ -15,7 +15,8 @@ public class Main {
                         String hash = utils.readHash(field);
                         String secretKey = utils.readPassword("Enter secret key(master password)");
                         String decryptedPassword = crypt.decrypt(hash, secretKey);
-                        System.out.println(decryptedPassword);
+                        if (decryptedPassword != null)
+                            System.out.println(decryptedPassword);
                     } else {
                         String[] fields = utils.listFields();
                         for (String field : fields) {
@@ -34,6 +35,7 @@ public class Main {
                             break;
                         }
                     }
+
                     String secretKey = utils.readPassword("Enter secret key(master password)");
                     String password = utils.readPassword("Password");
                     String confirmPassword = utils.readPassword("confirm Password");
@@ -41,7 +43,11 @@ public class Main {
                         System.out.println("Passwords donot match");
                         break;
                     }
+
                     String hash = crypt.encrypt(password, secretKey);
+                    if (hash == null)
+                        break;
+
                     try {
                         utils.insert(field, hash);
                     } catch(Exception e){
