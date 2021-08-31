@@ -93,7 +93,8 @@ public class Utils {
     }
 
     public String provideHelp() {
-        return String.format("%s\n%s\n%s\n%s\n%s",
+        return String.format("%s\n%s\n%s\n%s\n%s\n%s",
+            "Run `java -jar passwordmanager.jar` without any arguments to launch GUI",
             "# Usage java -jar passwordmanager.jar <options> <arguments>",
             "help\tDisplays this help menu",
             "insert\tMust be followed by the field name. Inserts a new password entry",
