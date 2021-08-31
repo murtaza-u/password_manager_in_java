@@ -1,5 +1,9 @@
 > Password Manager written in JAVA
 
+![password manager](assets/1.png)
+
+![password manager](assets/2.png)
+
 # Features
 - Uses AES encryption
 - Can output to stout(opens up a whole new world of possibilities)
