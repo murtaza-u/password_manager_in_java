@@ -7,8 +7,11 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.Console;
 
+import src.passwordmanager.crypt.Encrypt;
+
 public class Utils {
     private static String home;
+    private static Encrypt encrypt = new Encrypt();
 
     public Utils() {
         String os = System.getProperty("os.name").toLowerCase();
@@ -82,6 +85,11 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public String getHash(String newPassword, String secretKey) {
+        String hash = encrypt.encrypt(newPassword, secretKey);
+        return hash;
     }
 
     public String provideHelp() {
