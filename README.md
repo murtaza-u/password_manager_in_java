@@ -33,10 +33,10 @@ email
 ```
 
 2. Insert a new entry
-- The secret key is master password. Preferably keep it same for all your entries
+- The `secret key` used to encrypt and decrypt passwords. Keep it same for all the entries to make it act like a `master password`.
 ```bash
 $ java -jar passwordmanager.jar insert google # here google is the field name
-Enter secret key(master password):
+Enter secret key:
 Password:
 confirm Password:
 ```
