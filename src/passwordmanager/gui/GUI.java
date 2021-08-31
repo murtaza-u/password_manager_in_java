@@ -7,8 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.JButton;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,12 +37,12 @@ public class GUI extends JFrame {
         fieldText.setBounds(200, 30, 500, 50);
         fieldText.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.PLAIN, 18));
 
-        JLabel masterPasswordLabel = new JLabel("Master Password");
-        masterPasswordLabel.setBounds(30, 100, 200, 50);
+        JLabel secretKeyLabel = new JLabel("Secret Key");
+        secretKeyLabel.setBounds(30, 100, 200, 50);
 
-        JPasswordField masterPasswordText = new JPasswordField(20);
-        masterPasswordText.setBounds(200, 100, 500, 50);
-        masterPasswordText.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.PLAIN, 23));
+        JPasswordField secretKeyText = new JPasswordField(20);
+        secretKeyText.setBounds(200, 100, 500, 50);
+        secretKeyText.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.PLAIN, 23));
 
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setBounds(30, 170, 200, 50);
@@ -56,23 +58,48 @@ public class GUI extends JFrame {
         confirmPasswordText.setBounds(200, 240, 500, 50);
         confirmPasswordText.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.PLAIN, 23));
 
-        JButton addBtn = new JButton("OK");
+        JLabel feedBack = new JLabel("");
+        feedBack.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.BOLD, 22));
+        feedBack.setBounds(30, 600, 300, 200);
+
+        // Border borderError = BorderFactory.createLineBorder(new ColorUIResource(220, 53, 69), 5);
+
+        JButton addBtn = new JButton("Add");
         addBtn.setBounds(400, 400, 50, 50);
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+                String field = fieldText.getText();
                 String password = new String(passwordText.getPassword());
                 String confirmPassword = new String(confirmPasswordText.getPassword());
+                String secretKey = new String(secretKeyText.getPassword());
+
+                if (field.isBlank() || password.isBlank() || confirmPassword.isBlank() || secretKey.isBlank()) {
+                    JOptionPane.showMessageDialog(addBtn, "One or more field has been left blank");
+                    return;
+                }
+
                 if (password.equals(confirmPassword)) {
-                    String field = fieldText.getText();
-                    String inputKey = new String(masterPasswordText.getPassword());
-                    String hash = encrypt.encrypt(password, inputKey);
+                    if(utils.fieldExists(field)) {
+                        int dialogResult = JOptionPane.showConfirmDialog(addBtn, "Field exists. Overwrite?", "Field exists", JOptionPane.YES_NO_OPTION);
+                        if(dialogResult == JOptionPane.NO_OPTION){
+                            return;
+                        }
+                    }
+
+                    String hash = encrypt.encrypt(password, secretKey);
                     try {
                         utils.insert(field, hash);
+                        feedBack.setForeground(new ColorUIResource(25, 135, 84));
+                        feedBack.setText("Successfully added");
+                        fieldText.setText(null);
+                        secretKeyText.setText(null);
+                        passwordText.setText(null);
+                        confirmPasswordText.setText(null);
                     } catch (Exception e) {
-                        System.out.println("An error occured: " + e);
-                    } finally {
-                        dispose();
+                        feedBack.setForeground(new ColorUIResource(220, 53, 69));
+                        feedBack.setText("An error occurred. Could not encrypt password");
+                        // fieldText.setBorder(borderError);
                     }
                 } else {
                     JOptionPane.showMessageDialog(addBtn, "Passwords donot match");
@@ -81,26 +108,30 @@ public class GUI extends JFrame {
         });
 
         JPanel p1 = new JPanel();
+        p1.setBounds(0, 0, 500, 500);
         p1.setLayout(null);
         p1.add(fieldLabel);
         p1.add(fieldText);
-        p1.add(masterPasswordLabel);
-        p1.add(masterPasswordText);
+        p1.add(secretKeyLabel);
+        p1.add(secretKeyText);
         p1.add(passwordLabel);
         p1.add(passwordText);
         p1.add(confirmPasswordLabel);
         p1.add(confirmPasswordText);
         p1.add(addBtn);
+        p1.add(feedBack);
 
         JPanel p2 = new JPanel();
 
         JPanel p3 = new JPanel();
 
+        String padding = "     ";
+
         JTabbedPane tabs = new JTabbedPane();
         tabs.setBounds(0, 0, 1000, 1000);
-        tabs.add("Add new", p1);
-        tabs.add("List", p2);
-        tabs.add("HaveIBeenPwned", p3);
+        tabs.add(padding + "Add new" + padding, p1);
+        tabs.add(padding + "List" + padding, p2);
+        tabs.add(padding + "HaveIBeenPwned" + padding, p3);
 
         this.add(tabs);
         this.setVisible(true);
