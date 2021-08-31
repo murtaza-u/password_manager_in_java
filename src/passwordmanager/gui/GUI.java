@@ -11,6 +11,7 @@ public class GUI extends JFrame {
     Utils utils = new Utils();
     Encrypt encrypt = new Encrypt();
     AddNewEntry addNewEntry = new AddNewEntry();
+    ListAll listAll = new ListAll();
 
     public GUI() {
         this.setTitle("Password Manager");
@@ -22,7 +23,7 @@ public class GUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel p1 = addNewEntry.getAddNewEntry();
-        JPanel p2 = new JPanel();
+        JPanel p2 = listAll.getList();
         JPanel p3 = new JPanel();
 
         String padding = "     ";
