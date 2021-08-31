@@ -10,7 +10,7 @@ import src.passwordmanager.utils.Utils;
 public class GUI extends JFrame {
     Utils utils = new Utils();
     Encrypt encrypt = new Encrypt();
-    AddNewEntry addNewEntry = new AddNewEntry();
+    CheckDataBreaches addNewEntry = new CheckDataBreaches();
     ListAll listAll = new ListAll();
 
     public GUI() {
@@ -32,7 +32,7 @@ public class GUI extends JFrame {
         tabs.setBounds(0, 0, 1000, 1000);
         tabs.add(padding + "Add new" + padding, p1);
         tabs.add(padding + "List" + padding, p2);
-        tabs.add(padding + "HaveIBeenPwned" + padding, p3);
+        tabs.add(padding + "Data Breaches" + padding, p3);
 
         this.add(tabs);
         this.setVisible(true);
