@@ -17,22 +17,30 @@ $ javac src/passwordmanager/*.java
 $ jar cvfe passwordmanager.jar src.passwordmanager.Main src/passwordmanager/*
 ```
 
+- Export _JAVA_OPTIONS environment variable
+```bash
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+```
+
 # Usage
 ```bash
 java -jar passwordmanager.jar help # to get the help menu
 ```
 
 # Example
-1. List all the entries
+1. To launch GUI
 ```bash
-$ java -jar passwordmanager.jar ls # lists all the entries
-google
-email
-...
-...
+$ java -jar passwordmanager.jar
 ```
 
-2. Insert a new entry
+2. List all the entries
+```bash
+$ java -jar passwordmanager.jar ls
+google
+email
+```
+
+3. Insert a new entry
 - The `secret key` used to encrypt and decrypt passwords. Keep it same for all the entries to make it act like a `master password`.
 ```bash
 $ java -jar passwordmanager.jar insert google # here google is the field name
@@ -41,15 +49,16 @@ Password:
 confirm Password:
 ```
 
-3. Delete an entry
+4. Delete an entry
 ```bash
 $ java -jar passwordmanager.jar delete google
 ```
 
 # TODO
 - [ ] Improve error handling
-- [ ] implement a gui using `swing`
+- [x] implement a gui using `swing`
 - [ ] Test it on windows OS(Currently only tested on GNU/Linux)
+- [ ] implement delete entry option
 
 # Note
 - This is a university project. It solely exists to provide a learning experience.
