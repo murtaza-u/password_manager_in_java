@@ -18,7 +18,6 @@ public class ListAll {
     final private static String COPYICON = Paths.get(ASSETS, "copy.png").toString();
     final private static String EDITICON = Paths.get(ASSETS, "edit.png").toString();
     final private static String REFRESHICON = Paths.get(ASSETS, "refresh.png").toString();
-    final private static String DELETEICON = Paths.get(ASSETS, "delete.png").toString();
     private static Utils utils = new Utils();
 
     private static JButton getButton(String pathToImage) {
@@ -64,21 +63,16 @@ public class ListAll {
                 }
             });
 
-            JButton deleteBtn = getButton(DELETEICON);
-
             collection.add(label);
             collection.add(copyBtn);
             collection.add(editBtn);
-            collection.add(deleteBtn);
             collection.setLayout(layout);
 
             layout.putConstraint(SpringLayout.WEST, label, 15, SpringLayout.WEST, collection);
-            layout.putConstraint(SpringLayout.EAST, deleteBtn, -90, SpringLayout.EAST, collection);
             layout.putConstraint(SpringLayout.EAST, copyBtn, -50, SpringLayout.EAST, collection);
             layout.putConstraint(SpringLayout.EAST, editBtn, -10, SpringLayout.EAST, collection);
 
             layout.putConstraint(SpringLayout.NORTH, label, 16, SpringLayout.NORTH, collection);
-            layout.putConstraint(SpringLayout.NORTH, deleteBtn, 16, SpringLayout.NORTH, collection);
             layout.putConstraint(SpringLayout.NORTH, copyBtn, 16, SpringLayout.NORTH, collection);
             layout.putConstraint(SpringLayout.NORTH, editBtn, 16, SpringLayout.NORTH, collection);
 
