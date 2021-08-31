@@ -38,7 +38,7 @@ public class CLI implements Insert, Delete, Show, Help {
             }
         }
 
-        String secretKey = utils.readPassword("Enter secret key(master password)");
+        String secretKey = utils.readPassword("Enter secret key");
         String password = utils.readPassword("Password");
         String confirmPassword = utils.readPassword("confirm Password");
         if (!password.equals(confirmPassword)) {
@@ -73,7 +73,7 @@ public class CLI implements Insert, Delete, Show, Help {
     @Override
     public void showPassword(String field) {
         String hash = utils.readHash(field);
-        String secretKey = utils.readPassword("Enter secret key(master password)");
+        String secretKey = utils.readPassword("Enter secret key");
         String decryptedPassword = decrypt.decrypt(hash, secretKey);
         if (decryptedPassword != null)
         System.out.println(decryptedPassword);
