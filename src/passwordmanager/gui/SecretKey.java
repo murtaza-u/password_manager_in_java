@@ -21,7 +21,7 @@ public class SecretKey extends JFrame {
     private static Utils utils = new Utils();
     private static Decrypt decrypt = new Decrypt();
 
-    SecretKey(String field) {
+    public SecretKey(String field) {
         this.setSize(500, 170);
         this.setTitle("Enter secret key");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

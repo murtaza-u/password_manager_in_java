@@ -7,6 +7,7 @@ import java.util.Scanner;
 import src.passwordmanager.utils.Utils;
 import src.passwordmanager.utils.DataBreaches;
 import src.passwordmanager.crypt.*;
+import src.passwordmanager.gui.SecretKey;
 
 interface Insert {
     public void insert(String field);
@@ -17,8 +18,8 @@ interface Delete {
 }
 
 interface Show {
-    public void listFields();
-    public void showPassword(String field);
+    public void list();
+    public void list(String field);
 }
 
 interface Help {
@@ -67,7 +68,7 @@ public class CLI implements Insert, Delete, Show, Help {
     }
 
     @Override
-    public void listFields() {
+    public void list() {
         String[] fields = utils.listFields();
         for (String field : fields) {
             System.out.println(field.replace(".enc", ""));
@@ -75,7 +76,7 @@ public class CLI implements Insert, Delete, Show, Help {
     }
 
     @Override
-    public void showPassword(String field) {
+    public void list(String field) {
         String hash = utils.readHash(field);
         String secretKey = utils.readPassword("Enter secret key");
         String decryptedPassword = decrypt.decrypt(hash, secretKey);
@@ -92,9 +93,11 @@ public class CLI implements Insert, Delete, Show, Help {
         switch(args[0]) {
             case "ls":
                 if(args.length == 2) {
-                    showPassword(args[1]);
+                    list(args[1]);
+                } else if (args.length == 3 && args[1].equals("-gui")) {
+                    new SecretKey(args[2]);
                 } else {
-                    listFields();
+                    list();
                 }
                 break;
 
