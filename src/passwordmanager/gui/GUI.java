@@ -1,8 +1,8 @@
 package src.passwordmanager.gui;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JPanel;
 
 import src.passwordmanager.crypt.Encrypt;
 import src.passwordmanager.utils.Utils;
@@ -10,8 +10,10 @@ import src.passwordmanager.utils.Utils;
 public class GUI extends JFrame {
     Utils utils = new Utils();
     Encrypt encrypt = new Encrypt();
-    CheckDataBreaches addNewEntry = new CheckDataBreaches();
+    AddNewEntry addNewEntry = new AddNewEntry();
     ListAll listAll = new ListAll();
+    CheckDataBreaches checkDataBreaches = new CheckDataBreaches();
+    private static String padding = "     ";
 
     public GUI() {
         this.setTitle("Password Manager");
@@ -24,9 +26,7 @@ public class GUI extends JFrame {
 
         JPanel p1 = addNewEntry.getAddNewEntry();
         JPanel p2 = listAll.getList();
-        JPanel p3 = new JPanel();
-
-        String padding = "     ";
+        JPanel p3 = checkDataBreaches.getCheckBreachData();
 
         JTabbedPane tabs = new JTabbedPane();
         tabs.setBounds(0, 0, 1000, 1000);
