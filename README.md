@@ -28,7 +28,7 @@ $ javac -cp :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/Main.java src
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
-- Export _JAVA_OPTIONS environment variable
+- Export _JAVA_OPTIONS environment variable (make `java swing` uses your desktop environment theme)
 ```bash
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
 ```
@@ -63,6 +63,16 @@ confirm Password:
 4. Delete an entry
 ```bash
 $ java -jar passwordmanager.jar delete google
+```
+
+# Use with external script
+- The following shell script takes output of passwordmanager and pipes it into dmenu
+- The user can then select the field and passwordmanager will prompt them for the secretKey
+- If entered correctly, the decrypted password will be copied to user's clipboard
+```bash
+list="$(java 2>/dev/null -jar passwordmanager.jar ls)"
+selected="$(echo "$list" | dmenu -i)"
+java 2>/dev/null -jar passwordmanager.jar ls -gui "$selected" | xclip -selection clipboard
 ```
 
 # TODO

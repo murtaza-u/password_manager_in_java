@@ -48,6 +48,7 @@ public class SecretKey extends JFrame {
                 try {
                     String hash = utils.readHash(field);
                     String password = decrypt.decrypt(hash, secretKey);
+                    System.out.println(password); // testing
 
                     StringSelection stringSelection = new StringSelection(password);
                     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
