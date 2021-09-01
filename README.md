@@ -17,8 +17,8 @@
 ```bash
 $ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
 $ cd passwordmanager_java/
-$ javac src/passwordmanager/*.java
-$ jar cvfe passwordmanager.jar src.passwordmanager.Main src/passwordmanager/*
+$ javac :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/* src/passwordmanager/gui/*.java
+$ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
 - Export _JAVA_OPTIONS environment variable
@@ -28,7 +28,7 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 
 # Usage
 ```bash
-java -jar passwordmanager.jar help # to get the help menu
+$ java -jar passwordmanager.jar help # to get the help menu
 ```
 
 # Example
