@@ -14,13 +14,42 @@ import java.util.HashMap;
 
 import src.passwordmanager.utils.DataBreaches;
 
-public class CheckDataBreaches {
+class PopulateLabels extends Thread {
+    private static JLabel[] dataLabels = new JLabel[5];
+    private static String breachName;
+    private static JButton searchBtn;
+
     private static HashMap<String, String> getBreachData(String searchTerm) {
         DataBreaches dataBreaches = new DataBreaches();
         HashMap<String, String> breachData = dataBreaches.getData(searchTerm);
         return breachData;
     }
 
+    @Override
+    public void run() {
+        HashMap<String, String> breachData = getBreachData(breachName);
+        if(breachData != null) {
+            int i = 0;
+            for (Map.Entry<String, String> row : breachData.entrySet()) {
+                dataLabels[i].setText(row.getKey() + ":     " + row.getValue());
+                i ++;
+            }
+        } else {
+            JOptionPane.showMessageDialog(searchBtn, "Try using a different search term or check your internet connection and try again");
+            for (JLabel dataLabel : dataLabels) {
+                dataLabel.setText("");
+            }
+        }
+    }
+
+    PopulateLabels(String name, JLabel label[], JButton btn) {
+        breachName = name;
+        dataLabels = label;
+        searchBtn = btn;
+    }
+}
+
+public class CheckDataBreaches {
     public JPanel getCheckBreachData() {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 1000, 1000);
@@ -52,19 +81,9 @@ public class CheckDataBreaches {
         searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                HashMap<String, String> breachData = getBreachData(searchText.getText());
-                if(breachData != null) {
-                    int i = 0;
-                    for (Map.Entry<String, String> row : breachData.entrySet()) {
-                        dataLabels[i].setText(row.getKey() + ":     " + row.getValue());
-                        i ++;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(searchBtn, "Try using a different search term or check your internet connection and try again");
-                    for (JLabel dataLabel : dataLabels) {
-                        dataLabel.setText("");
-                    }
-                }
+                String breachName = searchText.getText();
+                PopulateLabels populateLabels = new PopulateLabels(breachName, dataLabels, searchBtn);
+                populateLabels.start();
             }
         });
 
