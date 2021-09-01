@@ -1,8 +1,11 @@
 package src.passwordmanager.cli;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import src.passwordmanager.utils.Utils;
+import src.passwordmanager.utils.DataBreaches;
 import src.passwordmanager.crypt.*;
 
 interface Insert {
@@ -26,6 +29,7 @@ public class CLI implements Insert, Delete, Show, Help {
     Utils utils = new Utils();
     Encrypt encrypt = new Encrypt();
     Decrypt decrypt = new Decrypt();
+    DataBreaches dataBreaches = new DataBreaches();
 
     @Override
     public void insert(String field) {
@@ -110,6 +114,21 @@ public class CLI implements Insert, Delete, Show, Help {
 
             case "help":
                 help();
+                break;
+
+            case "breach":
+                if(args.length == 2) {
+                    HashMap<String, String> data = dataBreaches.getData(args[1]);
+                    if(data != null) {
+                        for (Map.Entry<String, String> row : data.entrySet()) {
+                            System.out.println(row.getKey() + ":     "  + row.getValue());
+                        }
+                    } else {
+                        System.out.println("Try using a different search term or check your internet connection and try again");
+                    }
+                }
+                else
+                    System.out.println("Not enough arguments");
                 break;
 
             default:
