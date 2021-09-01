@@ -11,13 +11,13 @@
 # Installation
 ```bash
 $ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
-$ cd passwordmanager_java/
+$ cd password_manager_in_java/
 ```
 
 - Use jar file from build/
 ```bash
 $ cp build/passwordmanager.jar .
-$ java -jar passwordmanager.jar help
+$ java -jar passwordmanager.jar
 ```
 
 ### or
@@ -69,7 +69,6 @@ $ java -jar passwordmanager.jar delete google
 - [ ] Improve error handling
 - [x] implement a gui using `swing`
 - [ ] Test it on windows OS(Currently only tested on GNU/Linux)
-- [ ] implement delete entry option
 
 # Note
 - This is a university project. It solely exists to provide a learning experience.
