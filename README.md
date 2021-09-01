@@ -9,14 +9,21 @@
 - Can output to stout(opens up a whole new world of possibilities)
 
 # Installation
-- Download jar file from build/
+```bash
+$ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
+$ cd passwordmanager_java/
+```
+
+- Use jar file from build/
+```bash
+$ cp build/passwordmanager.jar .
+$ java -jar passwordmanager.jar help
+```
 
 ### or
 
 - compile from source
 ```bash
-$ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
-$ cd passwordmanager_java/
 $ javac :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/* src/passwordmanager/gui/*.java
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
