@@ -10,26 +10,50 @@
 - Can output to stout(opens up a whole new world of possibilities)
 
 # Setup
+## Linux
 ```bash
 $ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
 $ cd password_manager_in_java/
 ```
 
-- Use jar file from build/
-```bash
-$ cp build/passwordmanager.jar .
-$ java -jar passwordmanager.jar
-```
-
-### or
-
-- compile from source
+#### Compile
 ```bash
 $ javac -cp :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
+```
+
+#### Edit MANIFEST.MF
+- Set `Class-Path` to absolute path of lib/json-simple-1.1.1.jar
+Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simple-1.1.1.jar`
+
+#### Build the jar
+```bash
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
-- Export _JAVA_OPTIONS environment variable (make `java swing` use your desktop environment theme)
+
+## Windows
+```bash
+$ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
+$ cd password_manager_in_java
+```
+
+#### Compile
+```bash
+$ java -cp ;.\lib;.\lib\json-simple-1.1.1.jar src\passwordmanager\Main.java src\passwordmanager\gui\*.java
+```
+
+#### Edit MANIFEST.MF
+- Set `Class-Path` to absolute path of lib\json-simple-1.1.1.jar
+Eg: `Class-Path: C:\projects\password_manager_in_java\lib\json-simple-1.1.1.jar`
+
+#### Build the jar
+```bash
+$ jar cmf MANIFEST.MF passwordmanager.jar src\passwordmanager\* lib\*.jar
+```
+
+
+## Make `java swing` use your desktop environment theme
+- Export _JAVA_OPTIONS environment variable
 ```bash
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
 ```
