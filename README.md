@@ -24,7 +24,7 @@ $ java -jar passwordmanager.jar
 
 - compile from source
 ```bash
-$ javac :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/* src/passwordmanager/gui/*.java
+$ javac -cp :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
