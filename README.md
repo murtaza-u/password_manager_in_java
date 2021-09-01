@@ -1,8 +1,8 @@
 > Password Manager written in JAVA
 
-![password manager](assets/1.png)
-
 ![password manager](assets/2.png)
+
+![password manager](assets/1.png)
 
 # Features
 - Uses AES encryption
@@ -66,10 +66,12 @@ $ java -jar passwordmanager.jar delete google
 ```
 
 # TODO
-- [ ] Improve error handling
+- [x] Improve error handling
 - [x] implement a gui using `swing`
+- [x] get response from haveIbeenpwned api in a seperate thread.
 - [ ] Test it on windows OS(Currently only tested on GNU/Linux)
 
-# Note
+# Disclaimer
 - This is a university project. It solely exists to provide a learning experience.
+- There might be potential lurking bugs.
 - Please donot use this for anything but a reference. Murtaza Udaipurwala shall not be held responsible for your loses.
