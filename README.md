@@ -10,11 +10,12 @@
 - Can output to stout(opens up a whole new world of possibilities)
 
 # Setup
-## Linux
 ```bash
-$ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
+$ git clone https://github.com/Murtaza-Udaipurwala/password_manager_in_java
 $ cd password_manager_in_java/
 ```
+
+## Linux
 
 #### Compile
 ```bash
@@ -32,10 +33,6 @@ $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 
 
 ## Windows
-```bash
-$ git clone https://github.com/Murtaza-Udaipurwala/passwordmanager_java
-$ cd password_manager_in_java
-```
 
 #### Compile
 ```bash
@@ -111,6 +108,7 @@ Name:     Facebook
     * The user can then select the field and passwordmanager will prompt them for the secretKey
     * If entered correctly, the decrypted password will be copied to user's clipboard
     ```bash
+    #!/bin/sh
     list="$(java 2>/dev/null -jar passwordmanager.jar ls)"
     selected="$(echo "$list" | dmenu -i)"
     java 2>/dev/null -jar passwordmanager.jar ls -gui "$selected" | xclip -selection clipboard
