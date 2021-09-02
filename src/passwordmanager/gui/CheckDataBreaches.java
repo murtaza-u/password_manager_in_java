@@ -77,7 +77,7 @@ public class CheckDataBreaches {
 
 
         JButton searchBtn = new JButton("Search");
-        searchBtn.setBounds(425, 110, 150, 50);
+        searchBtn.setBounds(350, 110, 300, 50);
         searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {

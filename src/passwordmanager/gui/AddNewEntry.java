@@ -54,7 +54,7 @@ public class AddNewEntry {
         // Border borderError = BorderFactory.createLineBorder(new ColorUIResource(220, 53, 69), 5);
 
         JButton addBtn = new JButton("Add");
-        addBtn.setBounds(400, 400, 50, 50);
+        addBtn.setBounds(350, 400, 300, 50);
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
@@ -97,7 +97,7 @@ public class AddNewEntry {
         });
 
         JPanel panel = new JPanel();
-        panel.setBounds(0, 0, 500, 500);
+        panel.setBounds(0, 0, 1000, 1000);
         panel.setLayout(null);
         panel.add(fieldLabel);
         panel.add(fieldText);

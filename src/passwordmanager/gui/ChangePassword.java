@@ -52,7 +52,7 @@ public class ChangePassword extends JFrame {
         panel.add(confirmPasswordText);
 
         JButton button = new JButton("OK");
-        button.setBounds(210, 210, 80, 30);
+        button.setBounds(350, 210, 300, 30);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
