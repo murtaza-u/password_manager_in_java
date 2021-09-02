@@ -31,12 +31,12 @@ public class CLI implements Insert, Delete, Show, Help {
     Encrypt encrypt = new Encrypt();
     Decrypt decrypt = new Decrypt();
     DataBreaches dataBreaches = new DataBreaches();
+    Scanner sc = new Scanner(System.in);
 
     @Override
     public void insert(String field) {
         if (utils.fieldExists(field)) {
             System.out.print("Field exists. Overwrite? (y/N): ");
-            Scanner sc = new Scanner(System.in);
             String overwrite = sc.next();
             if (!overwrite.equalsIgnoreCase("y")) {
                 return;
