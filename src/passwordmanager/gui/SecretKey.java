@@ -41,7 +41,7 @@ public class SecretKey extends JFrame {
         panel.add(secretKeyText);
 
         JButton button = new JButton("Decrypt");
-        button.setBounds(350, 100, 300, 30);
+        button.setBounds(100, 100, 300, 30);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
