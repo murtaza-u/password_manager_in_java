@@ -19,6 +19,7 @@ public class ChangePassword extends JFrame {
         this.setSize(500, 260);
         this.setTitle("Change Password");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setUndecorated(true);
         this.setResizable(false);
 
         JPanel panel = new JPanel();

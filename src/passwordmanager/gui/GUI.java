@@ -1,5 +1,7 @@
 package src.passwordmanager.gui;
 
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
@@ -16,6 +18,9 @@ public class GUI extends JFrame {
     private static String padding = "     ";
 
     public GUI() {
+        ImageIcon logo = new ImageIcon(Paths.get("src", "passwordmanager", "assets", "logo.png").toString());
+
+        this.setIconImage(logo.getImage());
         this.setTitle("Password Manager");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 1000);

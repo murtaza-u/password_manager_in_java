@@ -25,6 +25,7 @@ public class SecretKey extends JFrame {
         this.setSize(500, 170);
         this.setTitle("Enter secret key");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setUndecorated(true);
         this.setResizable(false);
 
         JPanel panel = new JPanel();
