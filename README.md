@@ -15,7 +15,7 @@ $ git clone https://github.com/Murtaza-Udaipurwala/password_manager_in_java
 $ cd password_manager_in_java/
 ```
 
-## Using and IDE(Eclipse/IntelliJ IDEA)
+## Using an IDE(Eclipse/IntelliJ IDEA)
 1. Import this project
 2. Tell your IDE about all the dependencies by pointing it to the lib/ directory
 3. Build and run it
@@ -37,7 +37,8 @@ Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simpl
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
-## Make `java swing` use your desktop environment theme
+## Optional
+#### If password manager looks horrible, make `java swing` use your desktop environment theme
 - Export _JAVA_OPTIONS environment variable
 ```bash
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
