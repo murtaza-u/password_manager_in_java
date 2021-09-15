@@ -4,6 +4,8 @@ import java.nio.file.Paths;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.JPanel;
 
 import src.passwordmanager.crypt.Encrypt;
@@ -18,6 +20,21 @@ public class GUI extends JFrame {
     private static String padding = "     ";
 
     public GUI() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch(Exception err0) {
+            try {
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            } catch(Exception err1) {
+                try {
+                    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                } catch (Exception err3) {}
+            }
+        } finally {
+            SwingUtilities.updateComponentTreeUI(this);
+            this.pack();
+        }
+
         ImageIcon logo = new ImageIcon(Paths.get("src", "passwordmanager", "assets", "logo.png").toString());
 
         this.setIconImage(logo.getImage());
