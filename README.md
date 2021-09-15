@@ -15,8 +15,14 @@ $ git clone https://github.com/Murtaza-Udaipurwala/password_manager_in_java
 $ cd password_manager_in_java/
 ```
 
-## Linux
+## Using and IDE(Eclipse/IntelliJ IDEA)
+1. Import this project
+2. Tell your IDE about all the dependencies by pointing it to the lib/ directory
+3. Build and run it
 
+#### OR
+
+## Without using an IDE(Linux/OSX only)
 #### Compile
 ```bash
 $ javac -cp :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
@@ -31,24 +37,6 @@ Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simpl
 $ jar cmf MANIFEST.MF passwordmanager.jar src/passwordmanager/* lib/*.jar
 ```
 
-
-## Windows
-
-#### Compile
-```bash
-$ java -cp ;.\lib;.\lib\json-simple-1.1.1.jar src\passwordmanager\Main.java src\passwordmanager\gui\*.java
-```
-
-#### Edit MANIFEST.MF
-- Set `Class-Path` to absolute path of lib\json-simple-1.1.1.jar
-Eg: `Class-Path: C:\projects\password_manager_in_java\lib\json-simple-1.1.1.jar`
-
-#### Build the jar
-```bash
-$ jar cmf MANIFEST.MF passwordmanager.jar src\passwordmanager\* lib\*.jar
-```
-
-
 ## Make `java swing` use your desktop environment theme
 - Export _JAVA_OPTIONS environment variable
 ```bash
@@ -56,17 +44,17 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 ```
 
 # Usage
-```bash
-$ java -jar passwordmanager.jar help # to get the help menu
-```
-
-# Examples
 1. To launch GUI
 ```bash
 $ java -jar passwordmanager.jar
 ```
 
-2. List all the entries
+2. Get help
+```bash
+$ java -jar passwordmanager.jar help
+```
+
+3. List all the entries
 ```bash
 $ java -jar passwordmanager.jar ls
 
@@ -74,7 +62,7 @@ google
 email
 ```
 
-3. Insert a new entry
+4. Insert a new entry
 - The `secret key` used to encrypt and decrypt passwords. Keep it same for all the entries to make it act like a `master password`.
 ```bash
 $ java -jar passwordmanager.jar insert google # here google is the field name
@@ -84,12 +72,12 @@ Password:
 confirm Password:
 ```
 
-4. Delete an entry
+5. Delete an entry
 ```bash
 $ java -jar passwordmanager.jar delete google
 ```
 
-5. Get information about breaches
+6. Get information about breaches
 ```bash
 $ java -jar passwordmanager.jar breach facebook # pulling from haveIbeenpwned api
 
