@@ -3,7 +3,6 @@ package src.passwordmanager.crypt;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import src.passwordmanager.gui.FailedToDecrypt;
 
 public class Decrypt extends SecretKey {
     private static SecretKeySpec secretKey = null;
@@ -16,8 +15,7 @@ public class Decrypt extends SecretKey {
             cipher.update(Base64.getDecoder().decode(hashToDecrypt));
             return new String(cipher.doFinal());
         } catch (Exception e) {
-            System.out.println("Error while decrypting: " + e);
-            new FailedToDecrypt("Error while decrypting. Invalid secret key");
+            System.out.println("Invalid secret key");
             return null;
         }
     }

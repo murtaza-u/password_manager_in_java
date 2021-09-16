@@ -49,6 +49,9 @@ public class SecretKey extends JFrame {
                 try {
                     String hash = utils.readHash(field);
                     String password = decrypt.decrypt(hash, secretKey);
+                    if (password == null) {
+                        JOptionPane.showMessageDialog(button, "Invalid secret key");
+                    }
                     System.out.println(password); // testing
 
                     StringSelection stringSelection = new StringSelection(password);
