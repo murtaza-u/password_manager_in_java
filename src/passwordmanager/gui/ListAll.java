@@ -1,7 +1,7 @@
 package src.passwordmanager.gui;
 
-import java.nio.file.Paths;
-import javax.swing.ImageIcon;
+// import java.nio.file.Paths;
+// import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,15 +14,12 @@ import javax.swing.plaf.FontUIResource;
 import src.passwordmanager.utils.Utils;
 
 public class ListAll {
-    final private static String ASSETS = Paths.get("src", "passwordmanager", "assets").toString();
-    final private static String COPYICON = Paths.get(ASSETS, "copy.png").toString();
-    final private static String EDITICON = Paths.get(ASSETS, "edit.png").toString();
-    final private static String REFRESHICON = Paths.get(ASSETS, "refresh.png").toString();
     private static Utils utils = new Utils();
 
-    private static JButton getButton(String pathToImage) {
-        JButton button = new JButton(new ImageIcon(pathToImage));
-        button.setPreferredSize(new DimensionUIResource(20, 20));
+    private static JButton getButton(String text) {
+        JButton button = new JButton(text);
+        button.setPreferredSize(new DimensionUIResource(100, 20));
+        button.setFont(new FontUIResource(FontUIResource.SANS_SERIF, FontUIResource.TRUETYPE_FONT, 15));
         return button;
     }
 
@@ -45,7 +42,7 @@ public class ListAll {
 
             JLabel label = getLabel(fields[i]);
 
-            JButton copyBtn = getButton(COPYICON);
+            JButton copyBtn = getButton("copy");
             copyBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
@@ -54,7 +51,7 @@ public class ListAll {
                 }
             });
 
-            JButton editBtn = getButton(EDITICON);
+            JButton editBtn = getButton("edit");
             editBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
@@ -69,7 +66,7 @@ public class ListAll {
             collection.setLayout(layout);
 
             layout.putConstraint(SpringLayout.WEST, label, 15, SpringLayout.WEST, collection);
-            layout.putConstraint(SpringLayout.EAST, copyBtn, -50, SpringLayout.EAST, collection);
+            layout.putConstraint(SpringLayout.EAST, copyBtn, -150, SpringLayout.EAST, collection);
             layout.putConstraint(SpringLayout.EAST, editBtn, -10, SpringLayout.EAST, collection);
 
             layout.putConstraint(SpringLayout.NORTH, label, 16, SpringLayout.NORTH, collection);
@@ -87,8 +84,8 @@ public class ListAll {
         panel.setBounds(0, 0, 500, 500);
         panel.setLayout(null);
 
-        JButton refreshBtn = getButton(REFRESHICON);
-        refreshBtn.setBounds(1000-25, 5, 20, 20);
+        JButton refreshBtn = getButton("refresh");
+        refreshBtn.setBounds(1000-110, 5, 100, 20);
         refreshBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
