@@ -6,10 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.JPanel;
 
 import src.passwordmanager.crypt.Encrypt;
 import src.passwordmanager.utils.Utils;
+
+import com.formdev.flatlaf.*;
 
 public class GUI extends JFrame {
     Utils utils = new Utils();
@@ -21,18 +26,11 @@ public class GUI extends JFrame {
 
     public GUI() {
         try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch(Exception err0) {
-            try {
-                UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-            } catch(Exception err1) {
-                try {
-                    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-                } catch (Exception err3) {}
-            }
-        } finally {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
             SwingUtilities.updateComponentTreeUI(this);
             this.pack();
+        } catch (Exception err) {
+            System.out.println(err);
         }
 
         ImageIcon logo = new ImageIcon(Paths.get("src", "passwordmanager", "assets", "logo.png").toString());

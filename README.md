@@ -25,7 +25,7 @@ $ cd password_manager_in_java/
 ## Without using an IDE(Linux/OSX only)
 #### Compile
 ```bash
-$ javac -cp :./lib:./lib/json-simple-1.1.1.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
+$ javac -cp :./lib:./lib/json-simple-1.1.1.jar:./lib/flatlaf-1.6.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
 ```
 
 #### Edit MANIFEST.MF
