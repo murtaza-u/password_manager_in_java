@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: 16.0.2 (N/A)
 Main-Class: src.passwordmanager.Main
-Class-Path: /path/to/password_manager_in_java/lib/json-simple-1.1.1.jar /path/to/projects/password_manager_in_java/lib/flatlaf-1.6.jar /path/to/projects/password_manager_in_java/lib/
+Class-Path: /path/to/password_manager_in_java/lib/json-simple-1.1.1.jar /path/to/password_manager_in_java/lib/flatlaf-1.6.jar /path/to/password_manager_in_java/lib/flatlaf-1.6.jar lib/flatlaf-intellij-themes-1.6.jar
 
