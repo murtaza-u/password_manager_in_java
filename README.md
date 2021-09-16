@@ -29,8 +29,8 @@ $ javac -cp :./lib:./lib/json-simple-1.1.1.jar:./lib/flatlaf-1.6.jar src/passwor
 ```
 
 #### Edit MANIFEST.MF
-- Set `Class-Path` to absolute path of lib/json-simple-1.1.1.jar
-Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simple-1.1.1.jar`
+- Set `Class-Path` to absolute path of lib/json-simple-1.1.1.jar and lib/flatlaf-1.6.jar
+Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simple-1.1.1.jar /home/username/projects/password_manager_in_java/lib/flatlaf-1.6.jar`
 
 #### Build the jar
 ```bash
