@@ -15,6 +15,7 @@ import src.passwordmanager.crypt.Encrypt;
 import src.passwordmanager.utils.Utils;
 
 import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 
 public class GUI extends JFrame {
     Utils utils = new Utils();
@@ -26,7 +27,7 @@ public class GUI extends JFrame {
 
     public GUI() {
         try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
+            UIManager.setLookAndFeel(new FlatOneDarkIJTheme());
             SwingUtilities.updateComponentTreeUI(this);
             this.pack();
         } catch (Exception err) {

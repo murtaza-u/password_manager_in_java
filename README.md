@@ -25,12 +25,12 @@ $ cd password_manager_in_java/
 ## Without using an IDE(Linux/OSX only)
 #### Compile
 ```bash
-$ javac -cp :./lib:./lib/json-simple-1.1.1.jar:./lib/flatlaf-1.6.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
+$ javac -cp :./lib:./lib/json-simple-1.1.1.jar:./lib/flatlaf-1.6.jar:./lib/flatlaf-intellij-themes-1.6.jar src/passwordmanager/Main.java src/passwordmanager/gui/*.java
 ```
 
 #### Edit MANIFEST.MF
-- Set `Class-Path` to absolute path of lib/json-simple-1.1.1.jar and lib/flatlaf-1.6.jar
-Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simple-1.1.1.jar /home/username/projects/password_manager_in_java/lib/flatlaf-1.6.jar`
+- Set `Class-Path` to absolute path of lib/json-simple-1.1.1.jar, lib/flatlaf-1.6.jar and lib/flatlaf-1.6.jar lib/flatlaf-intellij-themes-1.6.jar
+Eg: `Class-Path: /home/username/projects/password_manager_in_java/lib/json-simple-1.1.1.jar /home/username/projects/password_manager_in_java/lib/flatlaf-1.6.jar /home/username/projects/password_manager_in_java/lib/flatlaf-intellij-themes-1.6.jar`
 
 #### Build the jar
 ```bash
